@@ -1,20 +1,29 @@
-from pydantic import BaseSettings
+from pydantic import BaseSettings, BaseModel
+
+class DbArgs(BaseModel):
+    type: str = 'sqlite' # sqlite | mysql | postgresql
+    host: str | None
+    port: int | None
+    username: str | None
+    password: str | None
+    database: str = 'db.db' # sqlite: file name
+
+class OpenAPIMetadata(BaseModel):
+    title: str = 'FastAPI'
+    version: str = '0.1.0'
+    description: str = 'API description'
 
 class Settings(BaseSettings):
-    db_type: str # sqlite | mysql | postgres
-    db_host: str | None
-    db_port: str | None
-    db_username: str | None
-    db_password: str | None
-    db_name: str | None
+    db: DbArgs
 
-    sqlite_file: str | None
+    secret_key: str = 'secret'
+    algorithm: str = 'HS256'
+    access_token_expire_minutes: int = 7 * 24 * 60 # 7 days
 
-    secret_key: str
-    algorithm: str
-    access_token_expire_minutes: int
+    openapi_metadata: OpenAPIMetadata
 
     class Config:
         env_file = '.env'
+        env_nested_delimiter = '__'
 
 settings = Settings()

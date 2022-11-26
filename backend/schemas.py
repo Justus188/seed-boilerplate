@@ -4,6 +4,27 @@ from datetime import datetime
 
 # Models for JSON input/output data validation. See models.py for SQLAlchemy models for DB.
 
+class ErrorDetailChildMsg(BaseModel):
+    msg: str
+
+class ErrorDetailChildMsgLoc(ErrorDetailChildMsg):
+    loc: List[str]
+
+class ErrorDetailChildMsgLocType(ErrorDetailChildMsgLoc):
+    type: str
+
+class ErrorDetailFlat(BaseModel):
+    detail: str
+
+class ErrorDetailParentMsg(BaseModel):
+    detail: ErrorDetailChildMsg
+
+class ErrorDetailLocParent(BaseModel):
+    detail: ErrorDetailChildMsgLoc
+
+class ErrorDetailLocTypeParent(BaseModel):
+    detail: ErrorDetailChildMsgLocType
+
 class OrmModel(BaseModel):
     class Config():
         orm_mode = True
