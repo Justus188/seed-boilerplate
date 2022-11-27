@@ -29,4 +29,4 @@ def login(request: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(
         raise FailedLoginException
     if not verify_password_hash(request.password, user.hashed_password):
         raise FailedLoginException
-    return {'access_token': create_token({"sub": str(user.id)}), 'token_type': 'bearer'}
+    return {'access_token': create_token({"sub": user.id}), 'token_type': 'bearer'}

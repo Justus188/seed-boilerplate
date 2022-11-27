@@ -33,12 +33,16 @@ class User(OrmModel):
     username: str
     email: EmailStr
     role: str
-    
+
 class UserCreate(User):
     password: str
 
 class UserRead(User):
     created_at: datetime
-
-class UserReadAdmin(UserRead):
     id: int
+
+class UserUpdate(OrmModel):
+    username: str|None = None
+    email: EmailStr|None = None
+    password: str|None = None
+    role: str|None = None

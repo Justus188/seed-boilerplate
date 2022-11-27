@@ -15,7 +15,7 @@ def exists_user(user: models.User) -> None:
 
 def me_or_admin(user: models.User, userid: int) -> None:
     if user.role != 'admin' and user.id != userid:
-        raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, detail = [{'msg': f'Only the user {user.username} or admin can access this.'}])
+        raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, detail = [{'msg': 'Only admin or target user can access this.'}])
 def admin(user: models.User) -> None:
     if user.role != 'admin':
         raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, detail = [{'msg': 'Only admin can access this.'}])

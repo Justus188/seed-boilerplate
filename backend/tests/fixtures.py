@@ -14,4 +14,5 @@ def db():
 
 @fixture
 def header1():
-    return create_token({'sub': 1})
+    token = create_token({'sub': 1})
+    return {'Authorization': f'Bearer {token}'}
