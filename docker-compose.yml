@@ -8,8 +8,6 @@ services:
       - ${API__PORT}:8000
     depends_on:
       - database
-    # environment:
-    #   DB_URL: mysql://root:root@db:3306
   database:
     image: mysql:5.7
     ports:
