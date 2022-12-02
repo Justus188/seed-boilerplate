@@ -2,6 +2,10 @@ Setup
 - Switch vsc to cmd to allow conda to work
 - Remember to cd to the correct root directory
 
+Environment variables
+- Pydantic `config.py` takes relative path
+- Docker compose automatically checks for .env file
+
 Virtual environment
 - Create: Conda: `conda create --name venv_name --file requirments.txt` or just package=version
 - Activate: Conda: `activate venv_name`, pip-venv: `venv_name\Scripts\activate`
@@ -29,6 +33,12 @@ Docker
 - Kill container: `docker kill container_name`
 - Remove container after force-stopping: `docker rm -f container_name`
 - Remove all stopped containers: `docker system prune`
+
+Docker-compose
+- Build: `docker-compose build`
+- Build + Start: `docker-compose up -d`
+- See all related containers: `docker-compose ps`
+- Stop: `docker-compose down`
 
 Security
 - Generate random secret key: `openssl rand -hex 32`

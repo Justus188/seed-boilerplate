@@ -1,4 +1,5 @@
 from pydantic import BaseSettings, BaseModel
+from dotenv import find_dotenv
 
 class DbArgs(BaseModel):
     type: str = 'sqlite' # sqlite | mysql | postgresql
@@ -23,7 +24,7 @@ class Settings(BaseSettings):
     openapi_metadata: OpenAPIMetadata
 
     class Config:
-        env_file = '.env'
+        env_file = find_dotenv(usecwd = True)
         env_nested_delimiter = '__'
 
 settings = Settings()
