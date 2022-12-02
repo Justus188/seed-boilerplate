@@ -6,3 +6,4 @@ Backend: Fastapi
 - JWT oauth2 security
 - Alembic DB versioning
 - Dockerized
+- Pytest /user route test suite

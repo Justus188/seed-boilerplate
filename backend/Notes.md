@@ -32,3 +32,6 @@ Docker
 
 Security
 - Generate random secret key: `openssl rand -hex 32`
+
+Pytest
+- `python -m pytest`
