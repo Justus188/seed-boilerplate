@@ -7,5 +7,5 @@ Backend: Fastapi
 - Database credentials and hashing setting set in `.env`: create using config.py pydantic model
 - JWT oauth2 security
 - Alembic DB versioning
-- Dockerized
+- Docker-compose for backend and MySQL database
 - Pytest /user route test suite

@@ -6,15 +6,18 @@ services:
       dockerfile: backend/Dockerfile
     ports:
       - ${API__PORT}:8000
+    depends_on:
+      - database
     # environment:
     #   DB_URL: mysql://root:root@db:3306
   database:
     image: mysql:5.7
     ports:
-      - ${DB__PORT}:3306
+      - 3305:3306
     volumes:
       - seed:/var/lib/mysql
     environment:
+      MYSQL_DATABASE: ${DB__DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB__PASSWORD}
 volumes:
   seed:

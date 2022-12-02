@@ -5,6 +5,7 @@ Setup
 Environment variables
 - Pydantic `config.py` takes relative path
 - Docker compose automatically checks for .env file
+- To allow shared .env between docker-compose and backend, any docker build for backend must be called from root.
 
 Virtual environment
 - Create: Conda: `conda create --name venv_name --file requirments.txt` or just package=version
@@ -35,10 +36,13 @@ Docker
 - Remove all stopped containers: `docker system prune`
 
 Docker-compose
+- Docker-compose allows containers to access each others' internal environment by using containername as the host.
+  - Therefore DB__HOST = database for docker-compose, but DB__HOST = localhost for local testing.
 - Build: `docker-compose build`
 - Build + Start: `docker-compose up -d`
 - See all related containers: `docker-compose ps`
 - Stop: `docker-compose down`
+  - Remove volumes with `-v` if you edit anything to update
 
 Security
 - Generate random secret key: `openssl rand -hex 32`
