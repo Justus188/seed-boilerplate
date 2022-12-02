@@ -52,3 +52,22 @@ Pytest
 
 Deployment on EC2
 - Linuz, T2.micro, Keypair is seed_boilerplate.pem
+1. Open cmd in .pem folder
+2. Copy line from "SSH client" in instance and run to connect to ssh
+3. `sudo apt update`
+4. `sudo apt install nginx`
+5. Check if nginx is running - check the public ip for EC2
+  - Change https to http  
+6. `sudo apt install docker`
+7. `sudo apt install docker-compose`
+8. `git clone <github_link> <folder_name>`
+  - Private repo is a pita, don't do it
+9. `sudo docker-compose up -d`
+10. `sudo docker exec <folder_name>-backend alembic upgrade head`
+11. `sudo vim /etc/nginx/sites-available/default`
+  - i to edit the file
+  - at location: change `try_files $uri $uri/ =404;` to `proxy_pass http://127.0.0.1:8000/;`
+12. `sudo systemctl restart nginx`
+13. Check website
+14. Begin debugging for one hour
+  - Can try `sudo systemctl status`
