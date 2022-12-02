@@ -49,3 +49,6 @@ Security
 
 Pytest
 - `python -m pytest`
+
+Deployment on EC2
+- Linuz, T2.micro, Keypair is seed_boilerplate.pem
